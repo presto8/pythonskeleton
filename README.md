@@ -12,7 +12,7 @@ This section will walk you through setting up an isolated development
 environment that does not impact the rest of your system.
 
 Requirements:
-- Python >= 3.6
+- Python >= 3.7
 - Virtualenv
 
 First, set up virtualenv to isolate the Python modules:
