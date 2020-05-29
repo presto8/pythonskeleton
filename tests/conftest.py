@@ -4,10 +4,8 @@ import helpers
 
 
 @pytest.fixture()
-def run_fig(tmp_path):
-    fig_dir = tmp_path / "figdir"
-    ret = functools.partial(helpers.run, "fig", "--figdir", str(fig_dir))
-    ret("init")
+def run_myapp(tmp_path):
+    ret = functools.partial(helpers.run, "myapp")
     return ret
 
 
