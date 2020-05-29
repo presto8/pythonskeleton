@@ -1,0 +1,7 @@
+- hypothesis
+- tox and testing for multiple python versions (very relevant for libraries)
+- pylint
+- mypy
+- Simple C extension wrapper (and/or boilerplate for cython extensions)
+
+- Config file generator
