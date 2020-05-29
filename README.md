@@ -28,4 +28,4 @@ Now try and run the `fig` executable to make sure everything is working:
 Finally, create a symbolic link to be able to run fig even when the virtualenv
 is not activated.
 
-    sudo ln -s venv/bin/myapp /usr/local/bin/myapp
+    sudo ln -s $PWD/venv/bin/myapp /usr/local/bin/myapp
