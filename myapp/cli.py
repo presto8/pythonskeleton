@@ -8,6 +8,7 @@ import click
 @dataclass
 class AppContext:
     data: str
+    configdir: str
 
 
 pass_app = click.make_pass_decorator(AppContext)
@@ -15,10 +16,15 @@ pass_app = click.make_pass_decorator(AppContext)
 
 @click.group()
 @click.option('--verbose/--no-verbose', default=False)
+@click.option('--config', type=str, default=None, envvar='MYAPP_CONFIG')
 @click.pass_context
-def cli(ctx, verbose):
+def cli(ctx, verbose, config):
+    app = AppContext()
+    app.configdir = lib.resolve_figdir(config)
+    app.data = "some data"
+    ctx.obj = app
+
     click.echo('I am about to invoke %s' % ctx.invoked_subcommand)
-    ctx.obj = AppContext(data="some data")
 
 
 @cli.command()
