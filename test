@@ -32,9 +32,11 @@ parse_args() {
 }
 
 check_venv() {
+    local script_path
+    script_path=$(dirname "$(realpath -s "$0")")
     if [[ ! -v VIRTUAL_ENV ]]; then
         echo automatically activating virtualenv before running tests
-        source venv/bin/activate
+        source "$script_path/venv/bin/activate"
     fi
 }
 
