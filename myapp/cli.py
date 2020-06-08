@@ -19,9 +19,10 @@ pass_app = click.make_pass_decorator(AppContext)
 @click.option('--config', type=str, default=None, envvar='MYAPP_CONFIG')
 @click.pass_context
 def cli(ctx, verbose, config):
-    app = AppContext()
-    app.configdir = lib.resolve_figdir(config)
-    app.data = "some data"
+    app = AppContext(
+        configdir=lib.resolve_configdir(config),
+        data="some data",
+    )
     ctx.obj = app
 
     click.echo('I am about to invoke %s' % ctx.invoked_subcommand)
@@ -30,7 +31,8 @@ def cli(ctx, verbose, config):
 @cli.command()
 @pass_app
 def hello(app):
-    click.echo(lib.do_hello())
+    hello = lib.do_hello()
+    click.echo(hello)
     click.echo(f'global data = {app.data}')
 
 
