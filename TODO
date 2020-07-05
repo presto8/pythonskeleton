@@ -1,3 +1,4 @@
+- suitcase or construct
 - hypothesis
 - tox and testing for multiple python versions (very relevant for libraries)
 - pylint
