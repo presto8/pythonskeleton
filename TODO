@@ -4,5 +4,5 @@
 - pylint
 - mypy
 - Simple C extension wrapper (and/or boilerplate for cython extensions)
-
 - Config file generator
+- Add sqlite support if shelve isn't good enough
