@@ -3,12 +3,13 @@
 from dataclasses import dataclass
 from myapp import lib
 import click
+import os
 
 
 @dataclass
 class AppContext:
     data: str
-    configdir: str
+    config: dict
 
 
 pass_app = click.make_pass_decorator(AppContext)
@@ -20,7 +21,7 @@ pass_app = click.make_pass_decorator(AppContext)
 @click.pass_context
 def cli(ctx, verbose, config):
     app = AppContext(
-        configdir=lib.resolve_configdir(config),
+        config=lib.load_config(os.path.join(lib.resolve_configdir(config), "config")),
         data="some data",
     )
     ctx.obj = app
