@@ -1,8 +1,18 @@
 Introduction
 ============
 
-pythonskeleton is an empty Python development environment including setuptools,
-pytest, and Click.
+pythonskeleton is a basic Python "hello, world" application that
+implements many features common to all projects:
+
+- Command-line interface using Click
+- Isolated development environment using setuptools/setup.py
+- Unit testing with pytest
+- Simple configuration file support using TOML
+- Simple persistent data storage using shelve
+- Github workflow for testing each commit
+
+It is intended to be used as a starting point for writing Python-based
+command-line applications.
 
 
 Developer installation
