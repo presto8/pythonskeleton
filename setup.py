@@ -9,6 +9,7 @@ setup(
     install_requires=[
         'pytest',
         'Click',
+        'sqlitedict',
     ],
     entry_points='''
         [console_scripts]

@@ -3,6 +3,7 @@
 from typing import List, Union
 import os
 import toml
+import sqlitedict
 
 
 def resolve_configdir(cli_arg=Union[None, str]) -> str:
@@ -23,6 +24,15 @@ def load_config(configpath):
         cfg = dict(a_string="FIXME", a_number=42)
         print(toml.dumps(cfg))
     return cfg
+
+
+class Db(sqlitedict.SqliteDict):
+    def vacuum(self):
+        self.conn.execute('vacuum')
+
+
+def load_db(dbpath):
+    return Db(dbpath, autocommit=True)
 
 
 def do_hello():
