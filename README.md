@@ -6,7 +6,8 @@ implements many features common to all projects:
 
 - Command-line interface using Click
 - Isolated development environment using setuptools/setup.py
-- Schemaless data persitence with sqlitedict
+- Schemaless data persitence with sqlitedict (which uses pickle for
+  serialization)
 - Unit testing with pytest
 - Simple configuration file support using TOML
 - Simple persistent data storage using shelve
