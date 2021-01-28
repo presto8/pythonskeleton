@@ -10,7 +10,6 @@ implements many features common to all projects:
   serialization)
 - Unit testing with pytest
 - Simple configuration file support using TOML
-- Simple persistent data storage using shelve
 - Github workflow for testing each commit
 
 It is intended to be used as a starting point for writing Python-based
