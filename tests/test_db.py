@@ -1,4 +1,3 @@
-import pytest
 import time
 
 from myapp import lib
