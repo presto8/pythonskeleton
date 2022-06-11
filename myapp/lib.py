@@ -1,6 +1,6 @@
 """Code in this file should be unit-testable."""
 
-from typing import List, Union
+from typing import Union
 import os
 import toml
 import sqlitedict
