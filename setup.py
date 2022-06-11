@@ -10,6 +10,7 @@ setup(
         'pytest',
         'Click',
         'sqlitedict',
+        'toml',
     ],
     entry_points='''
         [console_scripts]
