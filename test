@@ -8,10 +8,12 @@ main() {
     parse_args "$@"
     check_venv
 
+    cmd=(coverage run -m pytest "${ARGS[@]}")
+
     if [[ $LOOP -eq 1 ]]; then
-        find "${SOURCE_DIRS[@]}" -name "*.py" | entr coverage run -m pytest "${ARGS[@]}"
+        find "${SOURCE_DIRS[@]}" -name "*.py" | entr "${cmd[@]}"
     else
-        coverage run -m pytest "${ARGS[@]}"
+        "${cmd[@]}"
         coverage report
     fi
 }
