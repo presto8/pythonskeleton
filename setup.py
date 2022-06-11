@@ -10,6 +10,7 @@ setup(
         'pytest',
         'Click',
         'sqlitedict',
+        'coverage',
         'toml',
     ],
     entry_points='''

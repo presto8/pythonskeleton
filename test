@@ -9,9 +9,10 @@ main() {
     check_venv
 
     if [[ $LOOP -eq 1 ]]; then
-        find "${SOURCE_DIRS[@]}" -name "*.py" | entr pytest "${ARGS[@]}"
+        find "${SOURCE_DIRS[@]}" -name "*.py" | entr coverage run -m pytest "${ARGS[@]}"
     else
-        pytest "${ARGS[@]}"
+        coverage run -m pytest "${ARGS[@]}"
+        coverage report
     fi
 }
 
