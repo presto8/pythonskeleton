@@ -15,7 +15,7 @@ setup(
     ],
     entry_points='''
         [console_scripts]
-        myapp=myapp.cli:cli
+        myapp=src.cli:cli
     ''',
 
     author="Preston Hunt",

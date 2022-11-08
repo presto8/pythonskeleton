@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SOURCE_DIRS=(myapp tests)
+SOURCE_DIRS=(src tests)
 
 set -euo pipefail
 

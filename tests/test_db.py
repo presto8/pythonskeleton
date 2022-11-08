@@ -1,6 +1,6 @@
 import time
 
-from myapp import lib
+from src import lib
 
 
 def test_hello(tmp_path):

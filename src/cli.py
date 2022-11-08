@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from dataclasses import dataclass
-from myapp import lib
+from src import lib
 import click
 import os
 

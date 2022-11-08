@@ -1,4 +1,4 @@
-from myapp import lib
+from src import lib
 
 
 def test_hello():
