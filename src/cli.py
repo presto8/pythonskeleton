@@ -8,7 +8,7 @@ from src import lib
 from src import work
 
 
-APPNAME = "paddr"
+APPNAME = "myapp"
 
 HELP = f"""
 {APPNAME} by Preston Hunt <me@prestonhunt.com>

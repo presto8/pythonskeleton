@@ -1,11 +1,12 @@
 import pytest
 import functools
 import helpers
+from src.cli import APPNAME
 
 
 @pytest.fixture()
 def run_myapp(tmp_path):
-    ret = functools.partial(helpers.run, "myapp")
+    ret = functools.partial(helpers.run, APPNAME)
     return ret
 
 

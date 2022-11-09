@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+from src.cli import APPNAME
 
 setup(
     name='pythonskeleton',
@@ -12,9 +13,9 @@ setup(
         'coverage',
         'toml',
     ],
-    entry_points='''
+    entry_points=f'''
         [console_scripts]
-        myapp=src.cli:entrypoint
+        {APPNAME}=src.cli:entrypoint
     ''',
 
     author="Preston Hunt",
