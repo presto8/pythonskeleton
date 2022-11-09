@@ -10,7 +10,7 @@ setup(
         'pytest',
         'sqlitedict',
         'coverage',
-        'pyyaml',
+        'toml',
     ],
     entry_points='''
         [console_scripts]

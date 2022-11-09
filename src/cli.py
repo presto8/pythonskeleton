@@ -6,8 +6,9 @@ import sys
 from dataclasses import dataclass
 from src import lib
 from src import work
-from src.types import APPNAME
 
+
+APPNAME = "paddr"
 
 HELP = f"""
 {APPNAME} by Preston Hunt <me@prestonhunt.com>
@@ -66,7 +67,7 @@ def cli_mapper(args):
 
 def main(argv):
     args = parse_args(argv)
-    args.work = work.Work(configdir=args.configdir)
+    args.work = work.Work(appname=APPNAME, configdir=args.configdir)
     cli_mapper(args)
 
 

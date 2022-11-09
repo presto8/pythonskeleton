@@ -1,13 +1,13 @@
 import functools
 import os
-import yaml
+import toml
 from pathlib import PurePath
 from src import utils
-from src.types import APPNAME
 
 
 class Work:
-    def __init__(self, configdir: os.PathLike):
+    def __init__(self, appname: str, configdir: os.PathLike):
+        self.appname = appname
         self.configdir = self.resolve_configdir(configdir)
         self.datadir = self.resolve_datadir()
         self.status = utils.StatusKeeper(ephemeral_reasons="already-stored ignored")
@@ -23,14 +23,13 @@ class Work:
     warn = functools.partial(print_helper, level=3)
     error = functools.partial(print_helper, level=4)
 
-    @staticmethod
-    def resolve_path(provided, envvar, default):
+    def resolve_path(self, provided, envvar, default):
         if provided:
             path = provided
         elif envvar in os.environ:
-            path = PurePath(os.environ[envvar], APPNAME)
+            path = PurePath(os.environ[envvar], self.appname)
         else:
-            path = PurePath(default, APPNAME)
+            path = PurePath(default, self.appname)
         os.makedirs(path, exist_ok=True)
         return os.path.abspath(path)
 
@@ -43,10 +42,13 @@ class Work:
         return self.resolve_path(datadir, 'XDG_DATA_HOME', default)
 
     def load_configfile(self) -> object:
-        configfile = os.path.join(self.configdir, f"{APPNAME}.yaml")
-        with open(configfile) as f:
-            y = yaml.safe_load(f.read())
-        return y
+        configfile = os.path.join(self.configdir, f"{self.appname}.toml")
+        try:
+            with open(configfile) as f:
+                toml_dict = toml.loads(f.read())
+        except FileNotFoundError:
+            return {}
+        return toml_dict
 
 
 def hello(work):
