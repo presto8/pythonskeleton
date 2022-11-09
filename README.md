@@ -4,7 +4,7 @@ Introduction
 pythonskeleton is a basic Python "hello, world" application that
 implements many features common to all projects:
 
-- Command-line interface using Click
+- Command-line parsing using argparse
 - Isolated development environment using setuptools/setup.py
 - Schemaless data persitence with sqlitedict (which uses pickle for
   serialization)

@@ -8,14 +8,13 @@ setup(
     include_package_data=True,
     install_requires=[
         'pytest',
-        'Click',
         'sqlitedict',
         'coverage',
-        'toml',
+        'pyyaml',
     ],
     entry_points='''
         [console_scripts]
-        myapp=src.cli:cli
+        myapp=src.cli:entrypoint
     ''',
 
     author="Preston Hunt",
