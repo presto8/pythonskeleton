@@ -1,3 +1,11 @@
+# Important: the first word of the docstring below must be the app name
+"""
+myapp by Preston Hunt <me@prestonhunt.com>
+https://github.com/presto8/pythonskeleton
+
+A starting point for Python scripts.
+"""
+
 import argparse
 import inspect
 import os
@@ -8,22 +16,13 @@ from src import lib
 from src import work
 
 
-APPNAME = "myapp"
-
-HELP = f"""
-{APPNAME} by Preston Hunt <me@prestonhunt.com>
-https://github.com/presto8/pythonskeleton
-
-A starting point for Python scripts.
-"""
-
-
 def parse_args(argv):
-    configenv = f'{APPNAME.upper()}_DIR'
+    appname = __doc__.split()[0]
+    configenv = f'{appname.upper()}_DIR'
     default_command = "hello"
 
-    parser = argparse.ArgumentParser(description=HELP, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument('--configdir', default=os.environ.get(configenv), help=f'location of config files (default: ${configenv}, $XDG_CONFIG_HOME/{APPNAME}, ~/.config/{APPNAME})')
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument('--configdir', default=os.environ.get(configenv), help=f'location of config files (default: ${configenv}, $XDG_CONFIG_HOME/{appname}, ~/.config/{appname})')
     parser.add_argument('--verbose', default=False, action='store_true', help='show more detailed messages')
     parser.add_argument('--debug', action='store_true', help='print as much information as possible')
     parser.add_argument('--quiet', action='store_true', help='print as little output as possible, only error messages')
@@ -44,6 +43,7 @@ def parse_args(argv):
 
     args, unknown_args = parser.parse_known_args(argv)
     args.unknown_args = unknown_args
+    args.appname = appname
 
     if args.command is None:
         parser.print_help()
@@ -67,7 +67,7 @@ def cli_mapper(args):
 
 def main(argv):
     args = parse_args(argv)
-    args.work = work.Work(appname=APPNAME, configdir=args.configdir)
+    args.work = work.Work(appname=args.appname, configdir=args.configdir)
     cli_mapper(args)
 
 
